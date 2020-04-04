@@ -38,13 +38,7 @@ button{
     background-color: blueviolet;
     border: 0;
     white-space: normal;  
-}
-
-.todoTitle:empty:before{
-    content: attr(placeholder);
-    color: crimson;
-    pointer-events: none;
-    display: block; /* For Firefox */
+    word-wrap: break-word;
 }
 
 .todoItemsContainer{
@@ -71,7 +65,5 @@ button{
     height: 1.2rem;
     font-weight: 500;
     border: none;
-
-
 }
 

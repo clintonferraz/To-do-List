@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="globalContainer">
-        <div class="todoTitle" contenteditable="true" placeholder="Sem título" >Edite o título aqui...</div>
+        <div class="todoTitle" contenteditable="true" >Edite o título aqui...</div>
         
         <div class="todoItemsContainer">
 
@@ -21,13 +21,12 @@
 
 
 
-
     <script type="text/template" id="todoItemHTML">
 
         <button class="addItem" onclick="addItem(this)" >+</button>
         <input type="checkbox"  > 
         <input type="text" class="todoItemInput" placeholder="Teste">
-        <button class="addSubItem">+</button>
+        <button class="addSubItem" onclick="addSubItem(this)">+</button>
         <button class="removeItem" onclick="removeItem(this)" >-</button>
     </script>
 
