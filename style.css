@@ -41,7 +41,7 @@ button{
     word-wrap: break-word;
 }
 
-.todoItemsContainer{
+.allItemsContainer{
     margin: 2rem 2rem;
     width: 45rem;
     background-color: cyan;

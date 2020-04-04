@@ -1,13 +1,13 @@
 let firstItem = document.createElement('div');
-firstItem.classList.add('todoItem');
+firstItem.classList.add('itemContainer');
 firstItem.innerHTML = document.getElementById('todoItemHTML').innerHTML;
 firstItem.setAttribute('data-indentLevel','0');
-let itemsContainer = document.querySelector('.todoItemsContainer');
-itemsContainer.appendChild(firstItem);  
+let allItemsContainer = document.querySelector('.allItemsContainer');
+allItemsContainer.appendChild(firstItem);  
 
 let addItem = (pressed_button) => {
     let newItem = document.createElement('div');
-    newItem.classList.add('todoItem');
+    newItem.classList.add('itemContainer');
     newItem.innerHTML = document.getElementById('todoItemHTML').innerHTML;
 
     let indentLevelOfnewItem = pressed_button.parentNode.getAttribute('data-indentLevel');
@@ -20,28 +20,26 @@ let addItem = (pressed_button) => {
         let indentLevelOfRefItem = refItemToInsertBefore.getAttribute('data-indentLevel');
         if( parseInt(indentLevelOfRefItem) > parseInt(indentLevelOfnewItem) ){
             refItemToInsertBefore = refItemToInsertBefore.nextElementSibling;
-            console.log('1');
         }else{
-            console.log('2');
             break;
         }
     }
     
 
 
-    itemsContainer.insertBefore(newItem, refItemToInsertBefore);
+    allItemsContainer.insertBefore(newItem, refItemToInsertBefore);
 
-/*  if(itemsContainer.childElementCount > 3)
-    itemsContainer.childNodes[2].remove(); */
+/*  if(allItemsContainer.childElementCount > 3)
+    allItemsContainer.childNodes[2].remove(); */
 };
 
 let addSubItem = (pressed_button) => {
-    let todoItem = document.createElement('div');
-    todoItem.classList.add('todoItem');
-    todoItem.innerHTML = document.getElementById('todoItemHTML').innerHTML;
-    todoItem.setAttribute('data-indentLevel', 1 + parseInt(pressed_button.parentNode.getAttribute('data-indentLevel')) );
-    todoItem.style.paddingLeft = 3*todoItem.getAttribute('data-indentLevel') + 'rem';
-    itemsContainer.insertBefore(todoItem, pressed_button.parentNode.nextElementSibling);
+    let newItem = document.createElement('div');
+    newItem.classList.add('itemContainer');
+    newItem.innerHTML = document.getElementById('todoItemHTML').innerHTML;
+    newItem.setAttribute('data-indentLevel', 1 + parseInt(pressed_button.parentNode.parentNode.getAttribute('data-indentLevel')) );
+    newItem.style.paddingLeft = 3*newItem.getAttribute('data-indentLevel') + 'rem';
+    allItemsContainer.insertBefore(newItem, pressed_button.parentNode.nextElementSibling);
 };
 
 let removeItem = (pressed_button) => {
