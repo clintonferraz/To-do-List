@@ -56,7 +56,7 @@ let addSubItem = (pressedButton) => {
 
 let removeItem = (pressedButton) => {
     let whatToRemove = pressedButton.parentNode.parentNode;
-    if(whatToRemove.parentNode.childNodes[1] != whatToRemove){
+    if(whatToRemove.parentNode.childElementCount > 1){
         whatToRemove.remove();
     }
     
