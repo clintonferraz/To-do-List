@@ -1,3 +1,6 @@
+const INDENT_SIZE = 4; //default is 4
+const MAX_AMOUNT_OF_LEVELS = 8; //default is 8
+
 let firstItem = document.createElement('div');
 firstItem.classList.add('itemContainer');
 firstItem.innerHTML = document.getElementById('todoItemHTML').innerHTML;
@@ -24,7 +27,9 @@ let addItem = (pressed_button) => {
     let indentLevelOfnewItem = pressed_button.parentNode.parentNode.getAttribute('data-indentLevel');
     newItem.setAttribute('data-indentLevel', indentLevelOfnewItem);
 
-    newItem.childNodes[1].style.paddingLeft = 4*indentLevelOfnewItem + 'rem';
+    newItem.querySelector('.itemText').style.maxWidth= 43 - (INDENT_SIZE * indentLevelOfnewItem) + "rem";
+
+    newItem.childNodes[1].style.paddingLeft = INDENT_SIZE * indentLevelOfnewItem + 'rem';
 
     let refItemToInsertBefore = pressed_button.parentNode.parentNode.nextElementSibling;
     let whereToInsert = pressed_button.parentNode.parentNode.parentNode;
@@ -34,17 +39,19 @@ let addItem = (pressed_button) => {
 };
 
 let addSubItem = (pressed_button) => {
-    newItem = createItem();
-
+    
     let indentLevelOfnewItem = parseInt(pressed_button.parentNode.parentNode.getAttribute('data-indentLevel')) + 1;
-    newItem.setAttribute('data-indentLevel', indentLevelOfnewItem );
-
-    newItem.childNodes[1].style.paddingLeft = 4*newItem.getAttribute('data-indentLevel') + 'rem';
-
-    let refItemToInsertBefore = pressed_button.parentNode.nextElementSibling;
-    let itemContainerDiv = pressed_button.parentNode.parentNode;
-
-    itemContainerDiv.insertBefore(newItem, refItemToInsertBefore);
+    if(indentLevelOfnewItem <= MAX_AMOUNT_OF_LEVELS){
+        newItem = createItem();
+        newItem.setAttribute('data-indentLevel', indentLevelOfnewItem );
+        newItem.querySelector('.itemText').style.maxWidth= 43 - (INDENT_SIZE * indentLevelOfnewItem) + "rem";
+        newItem.childNodes[1].style.paddingLeft = INDENT_SIZE * newItem.getAttribute('data-indentLevel') + 'rem';
+    
+        let refItemToInsertBefore = pressed_button.parentNode.nextElementSibling;
+        let itemContainerDiv = pressed_button.parentNode.parentNode;
+    
+        itemContainerDiv.insertBefore(newItem, refItemToInsertBefore);
+    }
 };
 
 let removeItem = (pressed_button) => {

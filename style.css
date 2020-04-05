@@ -19,7 +19,7 @@ button{
 .globalContainer{
     margin: auto;
     background-color: blueviolet;
-    width: 50rem;
+    width: 60rem;
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@ button{
 
 .allItemsContainer{
     margin: 2rem 2rem;
-    width: 45rem;
+    width: 52rem;
     background-color: cyan;
     height: 100rem;
 }
@@ -65,7 +65,8 @@ button{
     height: 1.2rem;
     font-weight: 500;
     min-width: 3rem;
-    max-width: 25rem;
+    max-width: 43rem;
     height: auto;
+    word-wrap: break-word;
 }
 
