@@ -91,34 +91,16 @@ let checkBoxClick = (clicked_checkbox) => {
 
 let showButtons = (hoveredDiv) => {
     let buttons = hoveredDiv.querySelectorAll('button');
-    if(document.activeElement.className != 'itemText'){
-        buttons.forEach( button => {
-            button.classList.remove('hidden');
-        });
-    }
+    buttons.forEach( button => {
+        button.classList.remove('hidden');
+    });
 };
 
 let hideButtons = (hoveredDiv) => {
     let buttons = hoveredDiv.querySelectorAll('button');
-    let itemText = hoveredDiv.querySelector('.itemText');
-    if(document.activeElement != itemText){
-        buttons.forEach( button => {
-            button.classList.add('hidden');
-        });
-    }
-
-};
-
-let onItemTextFocus = (focusedItem) => {
-    let shownButtons = document.querySelectorAll('button:not(.hidden)');
-    let thisButtons = focusedItem.parentNode.querySelectorAll('button');
-    
-    shownButtons.forEach( button => {
+    buttons.forEach( button => {
         button.classList.add('hidden');
     });
-
-    thisButtons.forEach( button => {
-        button.classList.remove('hidden');
-    });
-    
 };
+
+
