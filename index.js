@@ -21,46 +21,49 @@ let createItem = () => {
     return newItem;
 };
 
-let addItem = (pressed_button) => {
+let addItem = (pressedButton) => {
     newItem = createItem();
 
-    let indentLevelOfnewItem = pressed_button.parentNode.parentNode.getAttribute('data-indentLevel');
+    let indentLevelOfnewItem = pressedButton.parentNode.parentNode.getAttribute('data-indentLevel');
     newItem.setAttribute('data-indentLevel', indentLevelOfnewItem);
 
     newItem.querySelector('.itemText').style.maxWidth= 43 - (INDENT_SIZE * indentLevelOfnewItem) + "rem";
 
     newItem.childNodes[1].style.paddingLeft = INDENT_SIZE * indentLevelOfnewItem + 'rem';
 
-    let refItemToInsertBefore = pressed_button.parentNode.parentNode.nextElementSibling;
-    let whereToInsert = pressed_button.parentNode.parentNode.parentNode;
+    let refItemToInsertBefore = pressedButton.parentNode.parentNode.nextElementSibling;
+    let whereToInsert = pressedButton.parentNode.parentNode.parentNode;
     
     whereToInsert.insertBefore(newItem, refItemToInsertBefore);
 
 };
 
-let addSubItem = (pressed_button) => {
+let addSubItem = (pressedButton) => {
     
-    let indentLevelOfnewItem = parseInt(pressed_button.parentNode.parentNode.getAttribute('data-indentLevel')) + 1;
+    let indentLevelOfnewItem = parseInt(pressedButton.parentNode.parentNode.getAttribute('data-indentLevel')) + 1;
     if(indentLevelOfnewItem <= MAX_AMOUNT_OF_LEVELS){
         newItem = createItem();
         newItem.setAttribute('data-indentLevel', indentLevelOfnewItem );
         newItem.querySelector('.itemText').style.maxWidth= 43 - (INDENT_SIZE * indentLevelOfnewItem) + "rem";
         newItem.childNodes[1].style.paddingLeft = INDENT_SIZE * newItem.getAttribute('data-indentLevel') + 'rem';
     
-        let refItemToInsertBefore = pressed_button.parentNode.nextElementSibling;
-        let itemContainerDiv = pressed_button.parentNode.parentNode;
+        let refItemToInsertBefore = pressedButton.parentNode.nextElementSibling;
+        let itemContainerDiv = pressedButton.parentNode.parentNode;
     
         itemContainerDiv.insertBefore(newItem, refItemToInsertBefore);
     }
 };
 
-let removeItem = (pressed_button) => {
-    let whatToRemove = pressed_button.parentNode.parentNode;
-    whatToRemove.remove();
+let removeItem = (pressedButton) => {
+    let whatToRemove = pressedButton.parentNode.parentNode;
+    if(whatToRemove.parentNode.childNodes[1] != whatToRemove){
+        whatToRemove.remove();
+    }
+    
 };
 
-let moveUp = (pressed_button) => {
-    let whatToMove = pressed_button.parentNode.parentNode;
+let moveUp = (pressedButton) => {
+    let whatToMove = pressedButton.parentNode.parentNode;
     let targetElement = whatToMove.previousElementSibling;
     if(targetElement != null){
         if(targetElement.getAttribute('class') === 'itemContainer'){
@@ -69,8 +72,8 @@ let moveUp = (pressed_button) => {
     }
 }
 
-let moveDown = (pressed_button) => {
-    let whatToMove = pressed_button.parentNode.parentNode;
+let moveDown = (pressedButton) => {
+    let whatToMove = pressedButton.parentNode.parentNode;
     let getSecondElementAfter = () => {
         if(whatToMove.nextElementSibling != null){
             return whatToMove.nextElementSibling.nextElementSibling;
@@ -81,5 +84,39 @@ let moveDown = (pressed_button) => {
 }
 
 let checkBoxClick = (clicked_checkbox) => {
+    
+};
+
+let showButtons = (hoveredDiv) => {
+    let buttons = hoveredDiv.querySelectorAll('button');
+    if(document.activeElement.className != 'itemText'){
+        buttons.forEach( button => {
+            button.classList.remove('hidden');
+        });
+    }
+};
+
+let hideButtons = (hoveredDiv) => {
+    let buttons = hoveredDiv.querySelectorAll('button');
+    let itemText = hoveredDiv.querySelector('.itemText');
+    if(document.activeElement != itemText){
+        buttons.forEach( button => {
+            button.classList.add('hidden');
+        });
+    }
+
+};
+
+let onItemTextFocus = (focusedItem) => {
+    let shownButtons = document.querySelectorAll('button:not(.hidden)');
+    let thisButtons = focusedItem.parentNode.querySelectorAll('button');
+    
+    shownButtons.forEach( button => {
+        button.classList.add('hidden');
+    });
+
+    thisButtons.forEach( button => {
+        button.classList.remove('hidden');
+    });
     
 };

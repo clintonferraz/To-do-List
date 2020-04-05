@@ -13,21 +13,19 @@
     <div class="globalContainer">
         <div class="todoTitle" contenteditable="true" >Edite o título aqui...</div>
         
-        <div class="allItemsContainer">
-
-        </div>
+        <div class="allItemsContainer"></div>
 
     </div>
 
     <script type="text/template" id="todoItemHTML">
-        <div class="todoItem">
-            <button class="addItemButton" onclick="addItem(this)" >(+)</button>
-            <input type="checkbox" onclick="checkBoxClick(this)" > 
-            <div class="itemText" contenteditable="true" >Escreva algo aqui...</div>
-            <button class="addSubItemButton" title="Add SubItem below this item" onclick="addSubItem(this)">(+)</button>
-            <button class="removeButton" onclick="removeItem(this)">(-)</button>
-            <button class="moveUpButton" onclick="moveUp(this)" >(🡡)</button>
-            <button class="moveDownButton" onclick="moveDown(this)" >(🡣)</button>
+        <div class="todoItem" onmouseover="showButtons(this)" onmouseout="hideButtons(this)" >
+            <button class="addItemButton hidden" title="Add new item below" onclick="addItem(this)" >(+)</button>
+            <input type="checkbox" onclick="checkBoxClick(this)"> 
+            <div class="itemText" contenteditable="true" onfocus="onItemTextFocus(this)" >Escreva algo aqui...</div>
+            <button class="addSubItemButton hidden" title="Add subitem below" onclick="addSubItem(this)">(+)</button>
+            <button class="removeButton hidden" onclick="removeItem(this)">(-)</button>
+            <button class="moveUpButton hidden" onclick="moveUp(this)" >(🡡)</button>
+            <button class="moveDownButton hidden" onclick="moveDown(this)" >(🡣)</button>
         </div>
 
     </script>
