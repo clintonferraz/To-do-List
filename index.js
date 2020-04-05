@@ -58,6 +58,8 @@ let removeItem = (pressedButton) => {
     let whatToRemove = pressedButton.parentNode.parentNode;
     if(whatToRemove.parentNode.childElementCount > 1){
         whatToRemove.remove();
+    }else{
+        whatToRemove.querySelector('.itemText').innerHTML = "Escreva algo aqui...";
     }
     
 };
