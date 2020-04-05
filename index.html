@@ -23,11 +23,13 @@
 
     <script type="text/template" id="todoItemHTML">
         <div class="todoItem">
-            <button class="addItem" onclick="addItem(this)" >+</button>
-            <input type="checkbox"  > 
-            <input type="text" class="todoItemInput" placeholder="Teste">
-            <button class="addSubItem" onclick="addSubItem(this)">+</button>
-            <button class="removeItem" onclick="removeItem(this)" >-</button>
+            <button class="addItemButton" onclick="addItem(this)" >(+)</button>
+            <input type="checkbox" onclick="checkBoxClick(this)" > 
+            <input type="text" class="todoItemInput" placeholder="Escreva algo">
+            <button class="addSubItemButton" onclick="addSubItem(this)">(+)</button>
+            <button class="removeButton" onclick="removeItem(this)">(-)</button>
+            <button class="moveUpButton" onclick="moveUp(this)" >(🡡)</button>
+            <button class="moveDownButton" onclick="moveDown(this)" >(🡣)</button>
         </div>
 
     </script>

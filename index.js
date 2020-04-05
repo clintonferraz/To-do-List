@@ -5,10 +5,22 @@ firstItem.setAttribute('data-indentLevel','0');
 let allItemsContainer = document.querySelector('.allItemsContainer');
 allItemsContainer.appendChild(firstItem);  
 
-let addItem = (pressed_button) => {
+
+let title1 = document.querySelector('.todoTitle');
+title1.addEventListener('blur', (event) => {
+    if(title1.innerHTML === "" || title1.innerHTML ==="<br>")
+    title1.innerHTML = "Sem título";
+}, true);
+
+let createItem = () => {
     let newItem = document.createElement('div');
     newItem.classList.add('itemContainer');
     newItem.innerHTML = document.getElementById('todoItemHTML').innerHTML;
+    return newItem;
+};
+
+let addItem = (pressed_button) => {
+    newItem = createItem();
 
     let indentLevelOfnewItem = pressed_button.parentNode.parentNode.getAttribute('data-indentLevel');
     newItem.setAttribute('data-indentLevel', indentLevelOfnewItem);
@@ -23,9 +35,7 @@ let addItem = (pressed_button) => {
 };
 
 let addSubItem = (pressed_button) => {
-    let newItem = document.createElement('div');
-    newItem.classList.add('itemContainer');
-    newItem.innerHTML = document.getElementById('todoItemHTML').innerHTML;
+    newItem = createItem();
 
     let indentLevelOfnewItem = parseInt(pressed_button.parentNode.parentNode.getAttribute('data-indentLevel')) + 1;
     newItem.setAttribute('data-indentLevel', indentLevelOfnewItem );
@@ -43,9 +53,6 @@ let removeItem = (pressed_button) => {
     whatToRemove.remove();
 };
 
-
-let title1 = document.querySelector('.todoTitle');
-title1.addEventListener('blur', (event) => {
-    if(title1.innerHTML === "" || title1.innerHTML ==="<br>")
-    title1.innerHTML = "Sem título";
-}, true);
+let checkBoxClick = (clicked_checkbox) => {
+    
+};
