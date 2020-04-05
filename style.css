@@ -37,7 +37,7 @@ button{
     font-size: 3rem;
     background-color: blueviolet;
     border: 0;
-    white-space: normal;  
+    white-space: unset;  
     word-wrap: break-word;
 }
 

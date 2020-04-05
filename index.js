@@ -2,9 +2,8 @@ let firstItem = document.createElement('div');
 firstItem.classList.add('itemContainer');
 firstItem.innerHTML = document.getElementById('todoItemHTML').innerHTML;
 firstItem.setAttribute('data-indentLevel','0');
-let allItemsContainer = document.querySelector('.allItemsContainer');
+const allItemsContainer = document.querySelector('.allItemsContainer');
 allItemsContainer.appendChild(firstItem);  
-
 
 let title1 = document.querySelector('.todoTitle');
 title1.addEventListener('blur', (event) => {
@@ -52,6 +51,27 @@ let removeItem = (pressed_button) => {
     let whatToRemove = pressed_button.parentNode.parentNode;
     whatToRemove.remove();
 };
+
+let moveUp = (pressed_button) => {
+    let whatToMove = pressed_button.parentNode.parentNode;
+    let targetElement = whatToMove.previousElementSibling;
+    if(targetElement != null){
+        if(targetElement.getAttribute('class') === 'itemContainer'){
+            whatToMove.parentNode.insertBefore(whatToMove,targetElement);
+        }
+    }
+}
+
+let moveDown = (pressed_button) => {
+    let whatToMove = pressed_button.parentNode.parentNode;
+    let getSecondElementAfter = () => {
+        if(whatToMove.nextElementSibling != null){
+            return whatToMove.nextElementSibling.nextElementSibling;
+        }
+    }
+    let targetElement = getSecondElementAfter();
+    whatToMove.parentNode.insertBefore(whatToMove,targetElement);
+}
 
 let checkBoxClick = (clicked_checkbox) => {
     
