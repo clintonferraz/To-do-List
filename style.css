@@ -60,10 +60,12 @@ button{
     height: 1.3rem;
 }
 
-.todoItem input[type=text]{
+.itemText{
     font-size: 1rem;
     height: 1.2rem;
     font-weight: 500;
-    border: none;
+    min-width: 3rem;
+    max-width: 25rem;
+    height: auto;
 }
 
