@@ -1,26 +1,50 @@
 * {
   margin: 0;
   padding: 0;  
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
 }
 
 html, body{
     height: 100%;
-    font-family: 'Rubik', sans-serif;
+    background-color: #003249;
 }
 
 button{
     cursor: pointer;
     border: none;
-    background-color: rgb(255, 0, 0);
+    background-color: rgba(0,0,0,0);
     display: block;
     margin: 0 0.4rem 0 0.4rem;
     transition: opacity 300ms linear;
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.removeButton{
+    background-image: url(./assets/delete_forever-24px.svg); 
+}
+.addItemButton{ 
+    background-image: url(./assets/add-24px.svg); 
+    margin-left: 0.5rem;
+}
+
+.addSubItemButton{
+    background-image: url(./assets/subitem_add-24px.svg); 
+}
+
+.moveUpButton{
+    background-image: url(./assets/move_up-24px.svg);
+}
+
+.moveDownButton{
+    background-image: url(./assets/move_down-24px.svg);
 }
 
 .globalContainer{
     margin: auto;
-    background-color: blueviolet;
     width: 60rem;
     min-height: 100%;
     display: flex;
@@ -29,15 +53,15 @@ button{
 }
 
 .todoTitle{
-    font-weight: 500;
-    color: #000;
+    font-weight: bold;
     text-align: center;
     margin-top: 4rem;
     height: auto;
     min-width: 15rem;
     max-width: 40rem;
     font-size: 3rem;
-    background-color: blueviolet;
+    color: #9ad1d4;
+    color: #CCDBDC;
     border: 0;
     white-space: unset;  
     word-wrap: break-word;
@@ -45,8 +69,7 @@ button{
 
 .allItemsContainer{
     margin: 2rem 2rem;
-    width: 52rem;
-    background-color: cyan;
+    width: 60rem;
     height: 100rem;
 }
 
@@ -58,27 +81,28 @@ button{
     padding: 0.5rem 0 0.5rem 0;
     display: flex;
     align-items: center;
-    background-color: darkgoldenrod;
-
 }
 
 .todoItem:hover{
-    background-color: darkgray;
+    background-color: #003E5B;
     transition: background-color 300ms linear;
 }
 
 .todoItem input[type=checkbox]{
     width: 1rem;
     height: 1rem;
+    cursor: pointer;
     margin: 0 0.4rem 0 0.4rem;
 }
 
 .itemText{
-    font-size: 1rem;
+    font-size: 18px;
     height: 1.2rem;
-    font-weight: 500;
     min-width: 3rem;
     max-width: 43rem;
+    margin:0 1.5rem 0 0.5rem;
+    color: #CCDBDC;
     height: auto;
     word-wrap: break-word;
+    transition: text-decoration 800ms ease-in-out ;
 }

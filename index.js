@@ -1,17 +1,21 @@
 const INDENT_SIZE = 4; //default is 4
 const MAX_AMOUNT_OF_LEVELS = 8; //default is 8
 
-let firstItem = document.createElement('div');
-firstItem.classList.add('itemContainer');
-firstItem.innerHTML = document.getElementById('todoItemHTML').innerHTML;
-firstItem.setAttribute('data-indentLevel','0');
-const allItemsContainer = document.querySelector('.allItemsContainer');
-allItemsContainer.appendChild(firstItem);  
+let addFirstItem = () => {
+    let firstItem = document.createElement('div');
+    firstItem.classList.add('itemContainer');
+    firstItem.innerHTML = document.getElementById('todoItemHTML').innerHTML;
+    firstItem.setAttribute('data-indentLevel','0');
+    const allItemsContainer = document.querySelector('.allItemsContainer');
+    allItemsContainer.appendChild(firstItem); 
+}
 
-let title1 = document.querySelector('.todoTitle');
-title1.addEventListener('blur', (event) => {
-    if(title1.innerHTML === "" || title1.innerHTML ==="<br>")
-    title1.innerHTML = "Sem título";
+addFirstItem();
+
+let title = document.querySelector('.todoTitle');
+title.addEventListener('blur', (event) => {
+    if(title.innerHTML === "" || title.innerHTML ==="<br>")
+    title.innerHTML = "Untitled";
 }, true);
 
 let createItem = () => {
@@ -56,12 +60,16 @@ let addSubItem = (pressedButton) => {
 
 let removeItem = (pressedButton) => {
     let whatToRemove = pressedButton.parentNode.parentNode;
-    if(whatToRemove.parentNode.childElementCount > 1){
+    var answer = true;
+    if(whatToRemove.childElementCount > 1){
+        answer = confirm('All subitems will also be deleted. Are you sure?')
+    } 
+    if(answer === true){
+        if(whatToRemove.parentNode.childElementCount === 1){
+            addFirstItem();
+        }
         whatToRemove.remove();
-    }else{
-        whatToRemove.querySelector('.itemText').innerHTML = "Escreva algo aqui...";
     }
-    
 };
 
 let moveUp = (pressedButton) => {
@@ -80,13 +88,22 @@ let moveDown = (pressedButton) => {
         if(whatToMove.nextElementSibling != null){
             return whatToMove.nextElementSibling.nextElementSibling;
         }
-    }
+    };
     let targetElement = getSecondElementAfter();
     whatToMove.parentNode.insertBefore(whatToMove,targetElement);
-}
+};
 
 let checkBoxClick = (clicked_checkbox) => {
-    
+    thisItemText = clicked_checkbox.parentNode.querySelector('.itemText');
+    if(clicked_checkbox.checked === true){      
+        thisItemText.style.textDecoration = "line-through";
+        thisItemText.style.textDecorationColor = "#007EA7";
+        thisItemText.style.color = '#004E72';
+    }else{
+        thisItemText.style.textDecorationColor = 'rgba(0, 0, 0, 0)';
+        thisItemText.style.textDecoration = 'none';
+        thisItemText.style.color = "#CCDBDC";
+    }
 };
 
 let showButtons = (hoveredDiv) => {
@@ -102,5 +119,3 @@ let hideButtons = (hoveredDiv) => {
         button.classList.add('hidden');
     });
 };
-
-

@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-do List</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    
-</head>
-<body>
-    <div class="globalContainer">
-        <div class="todoTitle" contenteditable="true" >Edite o título aqui...</div>
-        
-        <div class="allItemsContainer"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To-do List</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css"> 
+    </head>
 
-    </div>
+    <body>
+        <div class="globalContainer">
 
-    <script type="text/template" id="todoItemHTML">
-        <div class="todoItem" onmouseover="showButtons(this)" onmouseout="hideButtons(this)" >
-            <button class="addItemButton hidden" title="Add new item below" onclick="addItem(this)" >(+)</button>
-            <input type="checkbox" onclick="checkBoxClick(this)"> 
-            <div class="itemText" contenteditable="true" onfocus="onItemTextFocus(this)" >Escreva algo aqui...</div>
-            <button class="addSubItemButton hidden" title="Add subitem below" onclick="addSubItem(this)">(+)</button>
-            <button class="removeButton hidden" onclick="removeItem(this)">(-)</button>
-            <button class="moveUpButton hidden" onclick="moveUp(this)" >(🡡)</button>
-            <button class="moveDownButton hidden" onclick="moveDown(this)" >(🡣)</button>
+            <div class="todoTitle" contenteditable="true" >Untitled</div>
+            
+            <div class="allItemsContainer"></div>
+
         </div>
 
-    </script>
+        <script type="text/template" id="todoItemHTML">
+            <div class="todoItem" onmouseover="showButtons(this)" onmouseout="hideButtons(this)" >
+                <button class="addItemButton hidden" title="Add new item below" onclick="addItem(this)" ></button>
+                <input type="checkbox" onclick="checkBoxClick(this)"> 
+                <div class="itemText" contenteditable="true" >Type something...</div>
+                <button class="addSubItemButton hidden" title="Add subitem below" onclick="addSubItem(this)"></button>
+                <button class="moveUpButton hidden" title="Move up" onclick="moveUp(this)" ></button>
+                <button class="moveDownButton hidden" title="Move down" onclick="moveDown(this)" ></button>
+                <button class="removeButton hidden" title="Delete" onclick="removeItem(this)"></button>
+            </div>
+        </script>
 
-    <script src="index.js"></script>
+        <script src="index.js"></script>
 
-</body>
+    </body>
+    
 </html>
