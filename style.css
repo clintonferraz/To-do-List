@@ -92,10 +92,11 @@ button{
 
 .checkBoxContainer {
     position: relative;
-    width: 1rem;
-    height: 1rem;
-    background-color: #CCDBDC;
+    width: 13px;
+    height: 13px;
+    background-color: #003249;
     border-radius: 2px;
+    border: 2px solid rgb(181, 194, 202);
     cursor: pointer;
     margin: 0 0.4rem 0 0.4rem;
 }
@@ -104,49 +105,32 @@ button{
 .checkBoxContainer input {
     cursor: pointer;
     opacity: 0;
-    width: 1rem;
-    height: 1rem;
+    width: 13px;
+    height: 13px;
 }
 
 .checkmark {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 1rem;
-    height: 1rem;
-    background-color: #007EA7;
-    border-radius: 2px;
-    opacity: 0;
-}
-
-.checkmark:after {
     content: "";
+    opacity: 0;
     position: absolute;  
     left: 6px;
-    bottom: 5px;
+    bottom: 3px;
     width: 0px;
     height: 0px;
-    border: solid white;
+    border: solid rgb(181, 194, 202);
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
-    transform: rotate(45deg);     
+    transform: rotate(45deg) translate(0,0);  
 }
 
-.checkBoxContainer input:checked ~ .checkmark{
+input:checked ~ .checkmark {
     opacity: 1;
-    transition: opacity 100ms linear;
+    width: 5px;
+    height: 13px;
+    transition: width 150ms ease-in-out, height 150ms ease-in-out;
 }
 
-.checkBoxContainer input:checked ~ .checkmark::after{
-    width: 6px;
-    height: 12px;
-    transition: height 200ms linear;
-
-
-
-
-}
 
 .itemText{
     font-size: 18px;
