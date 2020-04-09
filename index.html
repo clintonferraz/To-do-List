@@ -20,7 +20,7 @@
         <script type="text/template" id="todoItemHTML">
             <div class="todoItem" onmouseover="showButtons(this)" onmouseout="hideButtons(this)" >
                 <button class="addItemButton hidden" title="Add new item below" onclick="addItem(this)" ></button>
-                <input type="checkbox" onclick="checkBoxClick(this)"> 
+                <label class="checkBoxContainer"  ><input type="checkbox" onclick="checkBoxClick(this)"> <div class="checkmark"></div></label>
                 <div class="itemText" contenteditable="true" >Type something...</div>
                 <button class="addSubItemButton hidden" title="Add subitem below" onclick="addSubItem(this)"></button>
                 <button class="moveUpButton hidden" title="Move up" onclick="moveUp(this)" ></button>

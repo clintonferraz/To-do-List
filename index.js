@@ -94,7 +94,7 @@ let moveDown = (pressedButton) => {
 };
 
 let checkBoxClick = (clicked_checkbox) => {
-    thisItemText = clicked_checkbox.parentNode.querySelector('.itemText');
+    thisItemText = clicked_checkbox.parentNode.parentNode.querySelector('.itemText');
     if(clicked_checkbox.checked === true){      
         thisItemText.style.textDecoration = "line-through";
         thisItemText.style.textDecorationColor = "#007EA7";
